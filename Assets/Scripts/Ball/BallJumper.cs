@@ -6,20 +6,48 @@ using UnityEngine;
 public class BallJumper : MonoBehaviour
 {
     [SerializeField] private float _jumpForce;
+    [SerializeField] private ParticleSystem _particleSystemBlow;
 
     private Rigidbody _rigidbody;
+    private bool _readyJump;
 
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
+       _particleSystemBlow = Instantiate(_particleSystemBlow); 
+
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.TryGetComponent(out PlatformSigment platformSegment))
+        {
+            _readyJump = false;
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.TryGetComponent(out PlatformSigment platformSegment))
+        if (collision.gameObject.TryGetComponent(out PlatformSigment platformSegment) && !_readyJump)
         {
-            _rigidbody.velocity = Vector3.zero; 
-            _rigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+            JumpeBall();
+            ParticleSystemBlow(collision);
         }
+
     }
+
+    private void JumpeBall()
+    {
+        _readyJump = true;
+        _rigidbody.velocity = Vector3.zero;
+        _rigidbody.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+    }
+
+    private void ParticleSystemBlow(Collision collision)
+    {
+        Vector3 position = collision.contacts[0].point; // позиция сталкновения 
+        _particleSystemBlow.transform.position = position;
+        _particleSystemBlow.Play(); 
+    }
+
 }
