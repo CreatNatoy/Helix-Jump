@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement; 
 
 [RequireComponent(typeof(Rigidbody))]
 public class BallJumper : MonoBehaviour
@@ -35,7 +36,21 @@ public class BallJumper : MonoBehaviour
         }
     }
 
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.TryGetComponent(out FinishPlatform finishPlatform))
+        {
+            AddLevel();
+            SceneManager.LoadScene(1);
+        }
+    }
 
+    private void AddLevel()
+    {
+        if (!PlayerPrefs.HasKey("Level"))
+            PlayerPrefs.SetInt("Level", 0);
+        PlayerPrefs.SetInt("Level", PlayerPrefs.GetInt("Level") + 1);
+    }
 
     private void JumpeBall()
     {

@@ -5,11 +5,19 @@ using UnityEngine.SceneManagement;
 
 public class BallDie : MonoBehaviour
 {
+    private PanelGameOver _panelGameOver;
+
+    private void Start()
+    {
+        _panelGameOver = FindObjectOfType<PanelGameOver>(); 
+    }
+
     private void OnCollisionStay(Collision collision)
     {
         if(collision.gameObject.TryGetComponent(out DiePlatform diePlatform))
-        {           
-            SceneManager.LoadScene(0);
+        {
+            _panelGameOver.SetActivePanelGameOver(); 
+          //  SceneManager.LoadScene(1);
         }
     }
 }

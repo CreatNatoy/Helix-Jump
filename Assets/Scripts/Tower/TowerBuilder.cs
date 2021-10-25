@@ -20,6 +20,12 @@ public class TowerBuilder : MonoBehaviour
         Build(); 
     }
 
+    private void Start()
+    {
+        if (!PlayerPrefs.HasKey("Level"))
+            PlayerPrefs.SetInt("Level", 1);
+    }
+
     private void Build()
     {
         GameObject beam = Instantiate(_beam, transform);
