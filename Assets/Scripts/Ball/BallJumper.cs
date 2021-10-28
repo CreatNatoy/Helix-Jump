@@ -7,14 +7,18 @@ public class BallJumper : MonoBehaviour
 {
     [SerializeField] private float _jumpForce;
     [SerializeField] private ParticleSystem _particleSystemBlow;
+    [SerializeField] private Camera _camera;
 
+    private Music _musicEffectJump; 
     private Rigidbody _rigidbody;
     private bool _readyJump;
 
     private void Start()
     {
         _rigidbody = GetComponent<Rigidbody>();
-       _particleSystemBlow = Instantiate(_particleSystemBlow); 
+       _particleSystemBlow = Instantiate(_particleSystemBlow);
+        _camera = FindObjectOfType<Camera>(); 
+        _musicEffectJump = _camera.gameObject.GetComponent<Music>();
 
     }
 
@@ -30,6 +34,7 @@ public class BallJumper : MonoBehaviour
     {
         if (collision.gameObject.TryGetComponent(out PlatformSigment platformSegment) && !_readyJump)
         {
+            _musicEffectJump.PlayJumpSound(); 
             JumpeBall();
             ParticleSystemBlow(collision);
         }

@@ -17,7 +17,6 @@ public class BallDie : MonoBehaviour
         if(collision.gameObject.TryGetComponent(out DiePlatform diePlatform))
         {
             _panelGameOver.SetActivePanelGameOver(); 
-          //  SceneManager.LoadScene(1);
         }
     }
 }

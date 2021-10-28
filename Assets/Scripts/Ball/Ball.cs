@@ -5,6 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class Ball : MonoBehaviour
 {
+     private GameObject _panelNextLevel;
+
+    private void Start()
+    {
+        _panelNextLevel = GameObject.FindGameObjectWithTag("PanelNextLevel");
+        _panelNextLevel.SetActive(false); 
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -12,14 +19,16 @@ public class Ball : MonoBehaviour
         {
             other.GetComponentInParent<Platform>().Break();
         }
-    }
-    private void OnTriggerStay(Collider other)
-    {
         if (other.TryGetComponent(out FinishPlatform finishPlatform))
         {
-            AddLevel();
-            SceneManager.LoadScene(1);
+            PanelNextLevel();
         }
+    }
+
+    private void PanelNextLevel()
+    {
+        _panelNextLevel.SetActive(true); 
+        AddLevel();
     }
 
     private void AddLevel()
