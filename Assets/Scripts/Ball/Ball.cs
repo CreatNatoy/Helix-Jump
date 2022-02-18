@@ -7,6 +7,14 @@ public class Ball : MonoBehaviour
 {
      private GameObject _panelNextLevel;
 
+    public static Ball Instance { get; private set; }
+
+    private void Awake()
+    {
+            if (Instance == null)
+                Instance = this; 
+    }
+
     private void Start()
     {
         _panelNextLevel = GameObject.FindGameObjectWithTag("PanelNextLevel");

@@ -5,7 +5,8 @@ using UnityEngine;
 public class BallTracking : MonoBehaviour
 {
     [SerializeField] private Vector3 _directionOffset;
-    [SerializeField] private float _lenght; 
+    [SerializeField] private float _lenght;
+    [SerializeField] private TowerBuilder _towerBuilder; 
 
     private Ball _ball;
     private Beam _beam;
@@ -14,8 +15,13 @@ public class BallTracking : MonoBehaviour
 
     private void Start()
     {
-        _ball = FindObjectOfType<Ball>();
-        _beam = FindObjectOfType<Beam>();
+        _ball = Ball.Instance;
+        _beam = _towerBuilder.BeamInstantiate;
+
+        if (_ball == null)
+            Debug.Log("Ball Empty");
+        if (_beam == null)
+            Debug.Log("Beam Empty"); 
 
         _cameraPosition = _ball.transform.position;
         _minimumBallPosition = _ball.transform.position;

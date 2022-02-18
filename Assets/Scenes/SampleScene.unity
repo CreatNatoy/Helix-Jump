@@ -1298,6 +1298,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _directionOffset: {x: 0, y: -0.6, z: 0}
   _lenght: 5
+  _towerBuilder: {fileID: 977525449}
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1357,9 +1358,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelCount: 3
   _additionalScale: 3
-  _beam: {fileID: 944992748112437791, guid: 160059981553d624fb4a9a1adcd1dca6, type: 3}
+  _beam: {fileID: -4466009767037536977, guid: 160059981553d624fb4a9a1adcd1dca6, type: 3}
   _spawnPlatform: {fileID: 1203319231291570325, guid: 50da609fd25ab10449a1b4b1eb358df4, type: 3}
-  _platform:
+  _platforms:
   - {fileID: 5251212415585211777, guid: d4e97eed7d30aa742b9710313b6b5aa5, type: 3}
   - {fileID: 5251212415585211777, guid: 167821caae66ec34e9165550a9272f63, type: 3}
   - {fileID: 5251212415585211777, guid: 5fae145e11f2c0043a3fff8a1e8da67c, type: 3}
@@ -1369,9 +1370,6 @@ MonoBehaviour:
   - {fileID: 5251212415585211777, guid: 94d0434892229f142a839e488f1899ff, type: 3}
   - {fileID: 5251212415585211777, guid: 89150a0f6b14ab54990dd9471dc66f88, type: 3}
   - {fileID: 5251212415585211777, guid: f2403fc7fada48046921b365217fc41a, type: 3}
-  - {fileID: 5251212415585211777, guid: 7d95c632de85a3646a62013b96c9ec92, type: 3}
-  - {fileID: 5251212415585211777, guid: 94d0434892229f142a839e488f1899ff, type: 3}
-  - {fileID: 5251212415585211777, guid: 89150a0f6b14ab54990dd9471dc66f88, type: 3}
   _finishPlatform: {fileID: 672743505096865858, guid: b13d545d6c8b13d40ae979cf3ac95c32, type: 3}
 --- !u!4 &977525450
 Transform:
