@@ -26,7 +26,7 @@ public class TowerBuilder : MonoBehaviour
         Build(); 
     }
 
-    private void LevelPlayer()
+    private void GetLevelPlayer()
     {
         if (!PlayerPrefs.HasKey("Level"))
             PlayerPrefs.SetInt("Level", 1);
@@ -35,7 +35,7 @@ public class TowerBuilder : MonoBehaviour
 
     private void Build()
     {
-        LevelPlayer();
+        GetLevelPlayer();
         PlatformLength();
 
         _beamInstantiate = Instantiate(_beam, transform);

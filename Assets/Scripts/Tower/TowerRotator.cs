@@ -17,10 +17,10 @@ public class TowerRotator : MonoBehaviour
     private void Update()
     {
         
-        if (Input.touchCount > 0 ) // количество касаний 
+        if (Input.touchCount > 0 )
         {
-            Touch touch = Input.GetTouch(0); // последние касание 
-            if(touch.phase == TouchPhase.Moved) // вращаем башню с касанием 
+            Touch touch = Input.GetTouch(0); 
+            if(touch.phase == TouchPhase.Moved) 
             {
                 float torque = touch.deltaPosition.x * Time.deltaTime * _rotateSpeed;
                 _rigidbody.AddTorque(Vector3.up * torque);

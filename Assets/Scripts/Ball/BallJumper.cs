@@ -51,7 +51,7 @@ public class BallJumper : MonoBehaviour
 
     private void ParticleSystemBlow(Collision collision)
     {
-        Vector3 position = collision.contacts[0].point; // позиция сталкновения 
+        Vector3 position = collision.contacts[0].point; 
         _particleSystemBlow.transform.position = position;
         _particleSystemBlow.Play(); 
     }

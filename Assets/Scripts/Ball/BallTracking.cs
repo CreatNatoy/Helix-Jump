@@ -18,11 +18,6 @@ public class BallTracking : MonoBehaviour
         _ball = Ball.Instance;
         _beam = _towerBuilder.BeamInstantiate;
 
-        if (_ball == null)
-            Debug.Log("Ball Empty");
-        if (_beam == null)
-            Debug.Log("Beam Empty"); 
-
         _cameraPosition = _ball.transform.position;
         _minimumBallPosition = _ball.transform.position;
 
